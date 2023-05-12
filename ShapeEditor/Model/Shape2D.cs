@@ -17,16 +17,22 @@ public abstract class Shape2D : Shape
 
     public override void Shift(int dx, int dy)
     {
-        foreach (Point point in points) point.Offset(dx, dy);
+        Location = new Point(Location.X + dx, Location.Y + dy);
+        for (int i = 0; i < points.Length; i++)
+            points[i].Offset(dx, dy);
     }
 
     public override void Scale(double scale)
     {
+        double factor = scale / CurrentScale;
+
         for (int i = 0; i < points.Length; i++)
         {
-            points[i].X = (int)(points[i].X * scale);
-            points[i].Y = (int)(points[i].Y * scale);
+            points[i].X = (int)(points[i].X * factor);
+            points[i].Y = (int)(points[i].Y * factor);
         }
+
+        CurrentScale = scale;
     }
 
     public override void Render(Graphics graphics)

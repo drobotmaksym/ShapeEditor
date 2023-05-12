@@ -4,7 +4,8 @@ namespace ShapeEditor.View;
 
 public class FilledDiamondView : ShapeView
 {
-    public FilledDiamondView() : base("Зафарбований ромб") { }
+    public FilledDiamondView() 
+        : base("Зафарбований ромб", typeof(FilledDiamond)) { }
 
     public override Shape CreateShapeInstance()
     {

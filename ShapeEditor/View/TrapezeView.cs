@@ -4,7 +4,7 @@ namespace ShapeEditor.View;
 
 public class TrapezeView : ShapeView
 {
-    public TrapezeView() : base("Трапеція") { }
+    public TrapezeView() : base("Трапеція", typeof(Trapeze)) { }
 
     public override Shape CreateShapeInstance()
     {

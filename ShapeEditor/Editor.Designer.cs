@@ -36,19 +36,30 @@
             content = new Panel();
             picture = new PictureBox();
             panel1 = new Panel();
-            add = new Button();
             shapeBox = new ListBox();
             label1 = new Label();
+            add = new Button();
             fileDialog = new OpenFileDialog();
             saveDialog = new SaveFileDialog();
             panel3 = new Panel();
-            textBox1 = new TextBox();
-            button1 = new Button();
+            scale = new NumericUpDown();
+            label4 = new Label();
+            yCoord = new NumericUpDown();
+            xCoord = new NumericUpDown();
+            label3 = new Label();
+            label2 = new Label();
+            next = new Button();
+            clear = new Button();
+            remove = new Button();
+            info = new TextBox();
             menu.SuspendLayout();
             content.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picture).BeginInit();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)scale).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)yCoord).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)xCoord).BeginInit();
             SuspendLayout();
             // 
             // menu
@@ -118,16 +129,6 @@
             panel1.Size = new Size(185, 375);
             panel1.TabIndex = 0;
             // 
-            // add
-            // 
-            add.Location = new Point(3, 3);
-            add.Name = "add";
-            add.Size = new Size(89, 23);
-            add.TabIndex = 0;
-            add.Text = "Додати";
-            add.UseVisualStyleBackColor = true;
-            add.Click += add_Click;
-            // 
             // shapeBox
             // 
             shapeBox.BackColor = SystemColors.Control;
@@ -151,6 +152,16 @@
             label1.Text = "Фігури";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // add
+            // 
+            add.Location = new Point(3, 3);
+            add.Name = "add";
+            add.Size = new Size(89, 23);
+            add.TabIndex = 0;
+            add.Text = "Додати";
+            add.UseVisualStyleBackColor = true;
+            add.Click += add_Click;
+            // 
             // fileDialog
             // 
             fileDialog.FileName = "fileDialog";
@@ -164,31 +175,118 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(button1);
-            panel3.Controls.Add(textBox1);
+            panel3.Controls.Add(scale);
+            panel3.Controls.Add(label4);
+            panel3.Controls.Add(yCoord);
+            panel3.Controls.Add(xCoord);
+            panel3.Controls.Add(label3);
+            panel3.Controls.Add(label2);
+            panel3.Controls.Add(next);
+            panel3.Controls.Add(clear);
+            panel3.Controls.Add(remove);
+            panel3.Controls.Add(info);
             panel3.Controls.Add(add);
             panel3.Dock = DockStyle.Bottom;
-            panel3.Location = new Point(0, 421);
+            panel3.Location = new Point(0, 395);
             panel3.Name = "panel3";
-            panel3.Size = new Size(587, 29);
+            panel3.Size = new Size(587, 55);
             panel3.TabIndex = 4;
             // 
-            // textBox1
+            // scale
             // 
-            textBox1.Enabled = false;
-            textBox1.Location = new Point(185, 3);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(399, 23);
-            textBox1.TabIndex = 1;
+            scale.DecimalPlaces = 1;
+            scale.Location = new Point(485, 29);
+            scale.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            scale.Name = "scale";
+            scale.Size = new Size(99, 23);
+            scale.TabIndex = 11;
+            scale.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            scale.ValueChanged += scale_ValueChanged;
             // 
-            // button1
+            // label4
             // 
-            button1.Location = new Point(98, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(81, 23);
-            button1.TabIndex = 2;
-            button1.Text = "Видалити";
-            button1.UseVisualStyleBackColor = true;
+            label4.AutoSize = true;
+            label4.Location = new Point(442, 33);
+            label4.Name = "label4";
+            label4.Size = new Size(37, 15);
+            label4.TabIndex = 10;
+            label4.Text = "Scale:";
+            // 
+            // yCoord
+            // 
+            yCoord.Location = new Point(335, 29);
+            yCoord.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+            yCoord.Minimum = new decimal(new int[] { 1000000, 0, 0, int.MinValue });
+            yCoord.Name = "yCoord";
+            yCoord.Size = new Size(99, 23);
+            yCoord.TabIndex = 9;
+            yCoord.ValueChanged += yCoord_ValueChanged;
+            // 
+            // xCoord
+            // 
+            xCoord.Location = new Point(208, 29);
+            xCoord.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+            xCoord.Minimum = new decimal(new int[] { 1000000, 0, 0, int.MinValue });
+            xCoord.Name = "xCoord";
+            xCoord.Size = new Size(98, 23);
+            xCoord.TabIndex = 8;
+            xCoord.ValueChanged += xCoord_ValueChanged;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(312, 33);
+            label3.Name = "label3";
+            label3.Size = new Size(17, 15);
+            label3.TabIndex = 7;
+            label3.Text = "Y:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(185, 33);
+            label2.Name = "label2";
+            label2.Size = new Size(17, 15);
+            label2.TabIndex = 5;
+            label2.Text = "X:";
+            // 
+            // next
+            // 
+            next.Location = new Point(98, 29);
+            next.Name = "next";
+            next.Size = new Size(81, 23);
+            next.TabIndex = 4;
+            next.Text = "Наступний";
+            next.UseVisualStyleBackColor = true;
+            next.Click += next_Click;
+            // 
+            // clear
+            // 
+            clear.Location = new Point(98, 3);
+            clear.Name = "clear";
+            clear.Size = new Size(81, 23);
+            clear.TabIndex = 3;
+            clear.Text = "Очистити";
+            clear.UseVisualStyleBackColor = true;
+            clear.Click += clear_Click;
+            // 
+            // remove
+            // 
+            remove.Location = new Point(3, 29);
+            remove.Name = "remove";
+            remove.Size = new Size(89, 23);
+            remove.TabIndex = 2;
+            remove.Text = "Видалити";
+            remove.UseVisualStyleBackColor = true;
+            remove.Click += remove_Click;
+            // 
+            // info
+            // 
+            info.Enabled = false;
+            info.Location = new Point(185, 4);
+            info.Name = "info";
+            info.Size = new Size(399, 23);
+            info.TabIndex = 1;
             // 
             // Editor
             // 
@@ -209,6 +307,9 @@
             panel1.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)scale).EndInit();
+            ((System.ComponentModel.ISupportInitialize)yCoord).EndInit();
+            ((System.ComponentModel.ISupportInitialize)xCoord).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -229,7 +330,15 @@
         private OpenFileDialog fileDialog;
         private SaveFileDialog saveDialog;
         private Panel panel3;
-        private Button button1;
-        private TextBox textBox1;
+        private Button remove;
+        private TextBox info;
+        private Button clear;
+        private NumericUpDown yCoord;
+        private NumericUpDown xCoord;
+        private Label label3;
+        private Label label2;
+        private Button next;
+        private NumericUpDown scale;
+        private Label label4;
     }
 }

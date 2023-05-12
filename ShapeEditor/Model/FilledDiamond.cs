@@ -6,4 +6,9 @@ public class FilledDiamond : Diamond
     {
         graphics.FillPolygon(Brushes.Black, points);
     }
+
+    public override string ToString()
+    {
+        return "Зафарбований ромб: " + base.ToString();
+    }
 }

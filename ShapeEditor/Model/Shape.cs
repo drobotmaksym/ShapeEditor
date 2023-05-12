@@ -2,7 +2,8 @@
 
 public abstract class Shape
 {
-    public Point Location { get; } = new Point();
+    public double CurrentScale { get; set; } = 1;
+    public Point Location { get; set; } = new();
 
     public Shape()
     {
@@ -22,4 +23,10 @@ public abstract class Shape
     public abstract double Perimeter();
 
     public abstract void Render(Graphics graphics);
+
+    public override string ToString()
+    {
+        return $"Позиція [X = {Location.X}, Y = {Location.Y}], "
+                + $"Розмір = {CurrentScale}";
+    }
 }

@@ -23,8 +23,8 @@ public class Segment : Shape2D
         return Math.Sqrt(dx * dx + dy * dy);
     }
 
-    public override string? ToString()
+    public override string ToString()
     {
-        return $"Segment";
+        return $"Відрізок: " + base.ToString();
     }
 }

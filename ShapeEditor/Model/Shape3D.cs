@@ -1,4 +1,6 @@
-﻿namespace ShapeEditor.Model;
+﻿using System.Drawing;
+
+namespace ShapeEditor.Model;
 
 public abstract class Shape3D : Shape
 {
@@ -26,26 +28,31 @@ public abstract class Shape3D : Shape
 
     public override void Scale(double scale)
     {
+        double factor = scale / CurrentScale;
+
         for (int i = 0; i < points.GetLength(0); i++)
         {
             for (int j = 0; j < points.GetLength(1); j++)
             {
                 Point point = points[i, j];
-                point.X = (int)(point.X * scale);
-                point.Y = (int)(point.Y * scale);
+                point.X = (int)(point.X * factor);
+                point.Y = (int)(point.Y * factor);
+                points[i, j] = point;
             }
         }
+
+        CurrentScale = scale;
     }
 
     public override void Render(Graphics graphics)
     {
         for (int i = 0; i < points.GetLength(0); i++)
         {
-            var polygons = new Point[points.GetLength(1)];
+            var polygon = new Point[points.GetLength(1)];
             for (int j = 0; j < points.GetLength(1); j++)
-                polygons[j] = points[i, j];
+                polygon[j] = points[i, j];
 
-            graphics.DrawPolygon(Pens.Black, polygons);
+            graphics.DrawPolygon(Pens.Black, polygon);
         }   
     }
 }

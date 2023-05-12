@@ -7,26 +7,39 @@ public class Trapeze : Shape2D
         points = new Point[] {
             new Point(50, 0),
             new Point(150, 0),
-            new Point(100, 100),
+            new Point(200, 100),
             new Point(0, 100)
         };
     }
 
     public override double Area()
     {
-        int dx1 = points[0].X - points[2].X;
-        int dy1 = points[0].Y - points[2].Y;
-        double d1 = Math.Sqrt(dx1 * dx1 + dy1 * dy1);
+        int a = points[1].X - points[0].X;
+        int b = points[2].X - points[3].X;
+        int h = points[2].Y - points[0].Y;       
 
-        int dx2 = points[1].X - points[3].X;
-        int dy2 = points[1].Y - points[3].Y;
-        double d2 = Math.Sqrt(dx2 * dx2 + dy2 * dy2);
-
-        return d1 * d2 / 2;
+        return a * b * h / 2.0;
     }
 
     public override double Perimeter()
     {
-        return 0;
+        int a = points[1].X - points[0].X;
+        int b = points[2].X - points[3].X;
+
+        int x1 = points[0].X - points[3].X;
+        int y1 = points[0].Y - points[3].Y;
+
+        int x2 = points[1].X - points[2].X;
+        int y2 = points[1].Y - points[2].Y;
+
+        double c1 = Math.Sqrt(x1 * x1 + y1 * y1);
+        double c2 = Math.Sqrt(x2 * x2 + y2 * y2);
+
+        return a + b + c1 + c2;
+    }
+
+    public override string ToString()
+    {
+        return "Трапеція: " + base.ToString();
     }
 }

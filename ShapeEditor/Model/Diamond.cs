@@ -7,9 +7,9 @@ public class Diamond : Shape2D
         points = new Point[]
         {
             new Point(50, 0),
-            new Point(100, 50),
-            new Point(50, 100),
-            new Point(0, 50)
+            new Point(100, 100),
+            new Point(50, 200),
+            new Point(0, 100)
         };
     }
 
@@ -29,5 +29,10 @@ public class Diamond : Shape2D
     public override double Perimeter()
     {
         return 0;
+    }
+
+    public override string ToString()
+    {
+        return "Ромб: " + base.ToString();
     }
 }
