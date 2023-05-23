@@ -2,6 +2,7 @@ using ShapeEditor.Model;
 using ShapeEditor.View;
 using System.ComponentModel;
 using System.Diagnostics.Eventing.Reader;
+using ShapeEditor.Model.Base;
 using Image = ShapeEditor.Model.Image;
 
 namespace ShapeEditor;
@@ -97,11 +98,11 @@ public partial class Editor : Form
     {
         Utils.ShowInfoBox(
             """
-            Дробот Максим Євгенович - король андалів та перших людей.
-            Його волосся блискуче як золото, а очі світяться 
-            як діаманти. 
+            Р”СЂРѕР±РѕС‚ РњР°РєСЃРёРј Р„РІРіРµРЅРѕРІРёС‡ - РєРѕСЂРѕР»СЊ Р°РЅРґР°Р»С–РІ С‚Р° РїРµСЂС€РёС… Р»СЋРґРµР№.
+            Р™РѕРіРѕ РІРѕР»РѕСЃСЃСЏ Р±Р»РёСЃРєСѓС‡Рµ СЏРє Р·РѕР»РѕС‚Рѕ, Р° РѕС‡С– СЃРІС–С‚СЏС‚СЊСЃСЏ 
+            СЏРє РґС–Р°РјР°РЅС‚Рё. 
             """
-            );
+        );
     }
 
     private void xCoord_ValueChanged(object sender, EventArgs e)
@@ -113,7 +114,7 @@ public partial class Editor : Form
         image.SelectedShape.Move(
             x,
             image.SelectedShape.Location.Y
-            );
+        );
 
         UpdateInfo();
         picture.Refresh();
@@ -128,7 +129,7 @@ public partial class Editor : Form
         image.SelectedShape.Move(
             image.SelectedShape.Location.X,
             y
-            );
+        );
 
         UpdateInfo();
         picture.Refresh();
@@ -142,7 +143,7 @@ public partial class Editor : Form
         bool parsed = double.TryParse(
             scale.Value.ToString(),
             out double value
-            );
+        );
 
         if (parsed == false) throw new ArgumentException();
         selected.Scale(value);

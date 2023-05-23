@@ -1,4 +1,5 @@
 ﻿using ShapeEditor.Model;
+using ShapeEditor.Model.Base;
 
 namespace ShapeEditor.View;
 
